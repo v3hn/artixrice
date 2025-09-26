@@ -1,0 +1,30 @@
+# launch terminal with Super+Enter
+super + Return
+    exec st fish
+
+# rofi on Super+d
+super + d
+    rofi -show drun
+
+# switch to next layout (dwm-specific via key sending)
+super + space
+    xdotool key super+space
+
+# file explorer
+super + e
+	thunar
+
+# Screenshot entire screen, save and copy to clipboard
+Print
+    mkdir -p ~/Pictures/Screenshots && \
+    FILE=~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png && \
+    scrot "$FILE" && \
+    xclip -selection clipboard -t image/png -i "$FILE"
+
+# Screenshot region, save and copy to clipboard
+super + shift + s
+    mkdir -p ~/Pictures/Screenshots && \
+    FILE=~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png && \
+    sleep 0.2 && \
+    scrot -f -s "$FILE" && \
+    xclip -selection clipboard -t image/png -i "$FILE"
